@@ -16,7 +16,7 @@ public class Roomba implements Directions {
 	}
 
 	// declared here so it is visible in all the methods!
-	private Robot roomba= new Robot();
+	private Robot roomba= new Robot(7,6,North,67);
 
 	// You will need to add many variables!!
 
@@ -37,7 +37,7 @@ public class Roomba implements Directions {
 
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
-		roomba.move();
+		roomba.move();;
 
 
 		int totalBeepers = 0; // Need to move this somewhere else.
