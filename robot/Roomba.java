@@ -10,13 +10,13 @@ public class Roomba implements Directions {
 		String worldName = "robot/basicRoom.wld";
 
 		Roomba cleaner = new Roomba();
-		int totalBeepers = cleaner.cleanRoom(worldName, 7, 6);
+		int totalBeepers = cleaner.cleanRoom(worldName, 9, 7);
 		System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
 
 	}
 
 	// declared here so it is visible in all the methods!
-	private Robot roomba= new Robot(7,6,North,67);
+	private Robot roomba= new Robot(7,6,North,100);
 
 	// You will need to add many variables!!
 
@@ -28,6 +28,7 @@ public class Roomba implements Directions {
 
 		World.readWorld(worldName);
 		World.setVisible(true);
+		World.setDelay(25);
 
 
 		/** This section will have all the logic that takes the Robot to every location
@@ -35,13 +36,79 @@ public class Roomba implements Directions {
 		 * large, complex task into smaller, easier to solve problems.
 		 */
 
+
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
-		roomba.move();;
 
+		//set the roomba initial moving direction (East))
+		roomba.turnLeft();
+		roomba.turnLeft();
+		roomba.turnLeft();
 
-		int totalBeepers = 0; // Need to move this somewhere else.
+		boolean done = false;
+		int totalBeepersPicked = 0; 
+		int totalSquaredMoved = 0;
+
+		while(!done) 
+		{
+			while(roomba.frontIsClear()) 
+			{
+				while (roomba.nextToABeeper()) 
+				{
+					totalBeepersPicked++;
+					roomba.pickBeeper();
+				}
+				roomba.move();
+				totalSquaredMoved++;
+			}
+
+			if (roomba.facingEast()) 
+			{
+				roomba.turnLeft();
+				if (roomba.frontIsClear()) 
+				{
+					roomba.move();
+					totalSquaredMoved++;
+					roomba.turnLeft();
+				}
+				else 
+				{
+					done = true;
+				}
+			}
+			else 
+			{
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.turnLeft();
+				if (roomba.frontIsClear()) 
+				{
+					roomba.move();
+					totalSquaredMoved++;
+					roomba.turnLeft();
+					roomba.turnLeft();
+					roomba.turnLeft();
+				}
+				else 
+				{
+					done = true;
+				}
+			}
+
+			if (done) 
+			{
+				//check if the last position has any beepers or not
+				if (roomba.nextToABeeper()) 
+				{
+					totalBeepersPicked++;
+					roomba.pickBeeper();
+				}
+			}
+		}
+		
+		System.out.println("Roomba total moves : " + totalSquaredMoved);
+
         // This method should return the total number of beepers cleaned up.
-		return totalBeepers;
+		return totalBeepersPicked;
 	}
 }
