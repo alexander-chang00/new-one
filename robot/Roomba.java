@@ -7,7 +7,7 @@ public class Roomba implements Directions {
 	// Main method to make this self-contained
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
-		String worldName = "robot/basicRoom.wld";
+		String worldName = "robot/TestWorld2.wld";
 
 		Roomba cleaner = new Roomba();
 		int totalBeepers = cleaner.cleanRoom(worldName, 9, 7);
@@ -28,7 +28,7 @@ public class Roomba implements Directions {
 
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(25);
+		World.setDelay(1);
 
 
 		/** This section will have all the logic that takes the Robot to every location
