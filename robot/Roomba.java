@@ -48,16 +48,29 @@ public class Roomba implements Directions {
 		boolean done = false;
 		int totalBeepersPicked = 0; 
 		int totalSquaredMoved = 0;
+		int i = 0;
+		int maxNbeepersInAPile = Integer.MIN_VALUE;
+		int minNbeepersInAPile = Integer.MAX_VALUE;
 
 		while(!done) 
 		{
 			while(roomba.frontIsClear()) 
 			{
+				i = 0;
 				while (roomba.nextToABeeper()) 
 				{
 					totalBeepersPicked++;
 					roomba.pickBeeper();
+					i++;
 				}
+				if (i > 0 && i > maxNbeepersInAPile)
+				{
+					maxNbeepersInAPile = i;
+				}
+				if (i > 0 && i < minNbeepersInAPile)
+				{
+					minNbeepersInAPile = i;
+				}				
 				roomba.move();
 				totalSquaredMoved++;
 			}
@@ -98,15 +111,27 @@ public class Roomba implements Directions {
 			if (done) 
 			{
 				//check if the last position has any beepers or not
-				if (roomba.nextToABeeper()) 
+				i = 0;
+				while (roomba.nextToABeeper()) 
 				{
 					totalBeepersPicked++;
 					roomba.pickBeeper();
+					i++;
+				}
+				if (i > maxNbeepersInAPile)
+				{
+					maxNbeepersInAPile = i;
+				}				
+				if (i > 0 && i < minNbeepersInAPile)
+				{
+					minNbeepersInAPile = i;
 				}
 			}
 		}
 		
 		System.out.println("Roomba total moves : " + totalSquaredMoved);
+		System.out.println("Max number of beepers in a pile : " + maxNbeepersInAPile);
+		System.out.println("Min number of beepers in a pile : " + minNbeepersInAPile);
 
         // This method should return the total number of beepers cleaned up.
 		return totalBeepersPicked;
