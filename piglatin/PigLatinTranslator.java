@@ -28,24 +28,31 @@ public class PigLatinTranslator {
 
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
-        string piglatin = input;
-        String firstLetter = input.substring(0,1)
-        String restofInput = input.substring(1)
-        pigLatin = restofInput + firstLetter + "ay";
+        String piglatin = input;
+        String firstLetter = input.substring(0,1);
+        String restofInput = input.substring(1);
+        String pigLatin = restofInput + firstLetter + "ay";
         String result = pigLatin;
 
-
-
-        // TODO: Replace this code to correctly translate a single word.
-        // Start here first!
-        // This is the first place to work.
-        result = input; // delete this line
-
+      
+        String vowels = "aeiouyAEIOUY";
+        if (vowels.contains(firstLetter.toLowerCase())) {
+            return input + "ay";
+        }
+        String restOfInput = input.substring(1);
+        pigLatin = restOfInput + firstLetter + "ay";
+        result = pigLatin;
         return result;
     }
+
+
+            
+
+        
+}
 
     // Add additonal private methods here.
     // For example, I had one like this:
     // private static String capitalizeFirstLetter(String input)
 
-}
+
