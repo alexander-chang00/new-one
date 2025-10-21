@@ -30,7 +30,7 @@ public class PigLatinTranslator {
         System.out.println("  -> translateWord('" + input + "')");
         String piglatin = input;
         String firstLetter = input.substring(0,1);
-        String restofInput = input.substring(1);
+        String restofInput = input.substring(4);
         String pigLatin = restofInput + firstLetter + "ay";
         String result = pigLatin;
 
@@ -44,7 +44,8 @@ public class PigLatinTranslator {
         result = pigLatin;
         return result;
     }
-
+        String int first vowels
+        
 
             
 
