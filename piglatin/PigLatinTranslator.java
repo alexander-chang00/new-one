@@ -54,11 +54,25 @@ public class PigLatinTranslator {
         String piglatin = input.trim();
         int len = piglatin.length();
         String result = "";
-
+        String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        boolean noletters = true;
+        for (int i = 0; i < len; i++){
+            char c = piglatin.charAt(i);
+            if (letters.contains(String.valueOf(c))){
+                //if any character is not a letter, return original input
+                noletters=false;
+            }
+        }
+        if (noletters){
+            return piglatin;
+        }
         if (len == 0){
             return result;  //if the input is empty or only spaces, return empty string
         }
-
+        if (input.equals("PG"))
+        {
+            System.out.println("Debugging PG case");
+        }
         String firstLetter = piglatin.substring(0,1);  //retrieve first letter
         String restofInput = piglatin.substring(1);             //retrieve rest of the input
 
@@ -89,7 +103,10 @@ public class PigLatinTranslator {
                 }
             }
         }
-
+        if (result.equals("")){
+            result = piglatin; //in case all letters are consonants, return original piglatin
+        }
+        //smh the one on line 89 did not work
         // Capitalization (keep caps as-is except transfer first letter style)
         if (isCapitalized){
             char resultFirstChar = result.charAt(0);

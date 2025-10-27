@@ -51,17 +51,30 @@ public class Book {
         this.title = title;
 
         // TODO: use Scanner to populate the book
+        Scanner sc = new Scanner(string);
+        while (sc.hasNextLine()){
+            String line = sc.nextLine();
+            text.add(line);
+        }
+        sc.close();
+
         // use: text.add(line) to add a line to the book.
     }
 
     public void readFromUrl(String title, String url) {
         // load a book from a URL.
-        // https://docs.oracle.com/javase/tutorial/networking/urls/readingURL.html
+       https://www.gutenberg.org/cache/epub/77131/pg77131.txt
         this.title = title;
 
         try {
             URL bookUrl = URI.create(url).toURL();
             // TODO: use Scanner to populate the book
+            Scanner sc = new Scanner(bookUrl.openStream());
+            while (sc.hasNextLine()){
+                String line = sc.nextLine();
+                text.add(line);
+            }
+            sc.close();
             // Scanner can open a file on a URL like this:
             // Scanner(bookUrl.openStream())
             // use: text.add(line) to add a line to the book.
@@ -72,6 +85,15 @@ public class Book {
 
     void writeToFile(String name) {
         // TODO: Add code here to write the contents of the book to a file.
+        try {
+            PrintWriter writer = new PrintWriter(new File(name));
+            for (String line : text) {
+                writer.println(line);
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         // Must write to file using provided name.
     }
+}
 }
