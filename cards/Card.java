@@ -1,7 +1,5 @@
 package cards;
 
-import piglatin.string;
-
 public class Card {
 //fields   
     private int value;

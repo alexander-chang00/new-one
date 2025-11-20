@@ -1,8 +1,5 @@
 package cards;
 
-import javax.smartcardio.Card;
-
-import piglatin.string;
 
 public class Hand {
     private int max=13;

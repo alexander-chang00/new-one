@@ -148,7 +148,6 @@ public class Game {
             {
                 value = 10;
             }
-            // TODO: deal with aces
             score += value;
         }
         return score;

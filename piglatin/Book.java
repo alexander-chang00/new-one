@@ -50,7 +50,6 @@ public class Book {
         // load a book from an input string.
         this.title = title;
 
-        // TODO: use Scanner to populate the book
         Scanner sc = new Scanner(string);
         while (sc.hasNextLine()){
             String line = sc.nextLine();
@@ -68,7 +67,6 @@ public class Book {
 
         try {
             URL bookUrl = URI.create(url).toURL();
-            // TODO: use Scanner to populate the book
             Scanner sc = new Scanner(bookUrl.openStream());
             while (sc.hasNextLine()){
                 String line = sc.nextLine();
@@ -84,7 +82,6 @@ public class Book {
     }
 
     void writeToFile(String name) {
-        // TODO: Add code here to write the contents of the book to a file.
         try {
             PrintWriter writer = new PrintWriter(new File(name));
             for (String line : text) {
