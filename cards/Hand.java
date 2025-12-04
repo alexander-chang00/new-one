@@ -9,15 +9,16 @@ public class Hand {
     public Hand(int max){
         this.max=max;
         topNum=0;
+        hand=new Card[max];
     }
 //methods
     public void add(Card c){
-        if(hand.length<max){
+        if(topNum<max){
             hand[topNum]=c;
             topNum++;
         }
         else{
-            System.out.println("no can do bud, your hand is full");
+            System.out.println("no can do bud, your s is full");
         }
     }
     public int length(){
