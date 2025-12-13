@@ -30,4 +30,87 @@ public class GameOfLife implements Board {
         }
     }
 
-   
+    // Step the simulation forward one turn.
+    public void step()
+    {
+        print();
+
+        int[][] next = new int[board.length][board[0].length];
+
+        for (int x = 0; x < board.length; x++) {
+            for (int y = 0; y < board[0].length; y++) {
+                int neighbors = countNeighbors(x, y);
+
+                if (board[x][y] == 1) {
+                    // Live cell
+                    if (neighbors == 2 || neighbors == 3) {
+                        next[x][y] = 1;
+                    } else {
+                        next[x][y] = 0;
+                    }
+                } else {
+                    // Dead cell
+                    if (neighbors == 3) {
+                        next[x][y] = 1;
+                    } else {
+                        next[x][y] = 0;
+                    }
+                }
+            }
+        }
+
+        board = next;
+    }
+
+    public int countNeighbors(int x, int y) {
+        int count = 0;
+
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                if (dx == 0 && dy == 0) {
+                    continue; // Skip the cell itself
+                }
+                count += get(x + dx, y + dy);
+            }
+        }
+
+        return count;
+    }
+
+    // Get a value from the board with "wrap around"
+    public int get(int x, int y) {
+        int xLimit = board.length;
+        int yLimit = board[0].length;
+        return board[(x + xLimit) % xLimit][(y + yLimit) % yLimit];
+    }
+
+    // Test helper to get the whole board state
+    public int[][] get()
+    {
+        return board;
+    }
+
+    // Test helper to print the current state
+    public void print(){
+        System.out.print("\n ");
+        for (int y = 0; y < board[0].length; y++) {
+            System.out.print(y % 10 + " ");
+        }
+
+        for (int x = 0; x < board.length; x++) {
+            System.out.print("\n" + x % 10);
+            for (int y = 0; y < board[x].length; y++)
+            {
+                if (board[x][y] == 1)
+                {
+                    System.out.print("⬛");
+                }
+                else
+                {
+                    System.out.print("⬜");
+                }
+            }
+        }
+        System.out.println();
+    }
+}
