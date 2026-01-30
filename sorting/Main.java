@@ -18,11 +18,10 @@ public class Main {
         int[] testInput = randomArray(5);
 
         // Increase the loop count to get better results once it works.
-        // TestSuite.run(testInput, 10000);
         TestSuite.run(testInput, 1);
-        // TestSuite.run(testInput, 10000);
     }
-     public static int[] randomArray(int length)
+
+    public static int[] randomArray(int length)
     {
         Random rand = new Random();
         int[] a = new int[length];
@@ -33,5 +32,5 @@ public class Main {
 
         return a;
     }
-}
 
+}
