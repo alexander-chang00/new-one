@@ -1,7 +1,7 @@
 package sorting;
 
 public class BubbleSort implements Sorter {
-
+    
     public void sort(int[] input)
     {
         // Loop for all elements in the array
