@@ -1,7 +1,7 @@
 package sorting;
 
 public class SelectionSort implements Sorter {
-
+int step = 0;
     public void sort(int[] input) {
         System.out.println("Selection Sort!!!");
 
@@ -17,6 +17,9 @@ public class SelectionSort implements Sorter {
             int temp = input[i];
             input[i] = input[minIndex];
             input[minIndex] = temp;
+            step++;
+            
         }
+        System.out.println("SelectionSort Steps: " + step);
     }
 }

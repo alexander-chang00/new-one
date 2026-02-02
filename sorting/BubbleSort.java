@@ -4,6 +4,7 @@ public class BubbleSort implements Sorter {
     
     public void sort(int[] input)
     {
+        int step = 0;
         // Loop for all elements in the array
         for (int outer = 0; outer < input.length - 1; outer++) {
             // Inner loop is one shorter for every outer loop.
@@ -14,8 +15,10 @@ public class BubbleSort implements Sorter {
                     int temp = input[inner];
                     input[inner] = input[inner + 1];
                     input[inner + 1] = temp;
+                    step++;
                 }
             }
         }
+        System.out.println("BubbleSort Steps: " + step);
     }
 }

@@ -1,7 +1,7 @@
 package sorting;
 
 public class InsertionSort implements Sorter {
-
+ int step = 0;
     public void sort(int[] input) {
         System.out.println("Insertion Sort!!!");
 
@@ -15,6 +15,8 @@ public class InsertionSort implements Sorter {
             }
 
             input[j + 1] = key;
+            step++;
         }
+        System.out.println("InsertionSort Steps: " + step);
     }
 }
