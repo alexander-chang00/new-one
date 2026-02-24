@@ -12,6 +12,7 @@ public class MergeSort implements Sorter {
      *
      * @param  list  reference to an array of integers to be sorted
      */
+       int step = 0;
     public void mergeSort(int [] list, int n){
         if (n < 2)
         {
@@ -64,6 +65,8 @@ public class MergeSort implements Sorter {
         while (j < right)
         {
             a[k++] = r[j++];
+            step++;
+              System.out.println("MergeSort Steps: " + step);
         }
     }
 }
