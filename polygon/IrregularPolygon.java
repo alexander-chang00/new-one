@@ -8,21 +8,17 @@ public class IrregularPolygon {
     private ArrayList<Point2D.Double> myPolygon = new ArrayList<Point2D.Double>();
 
     // constructor
-    public IrregularPolygon() {}
-       public void add(Point2D.Double aPoint)
-    {
-        myPolygon.add(aPoint);
+    public IrregularPolygon() {
     }
 
     // public methods
-    public void add(Point2D.Double aPoint)
-    {
-          myPolygon.add(aPoint);
+    public void add(Point2D.Double aPoint) {
+        myPolygon.add(aPoint);
     }
 
     public double perimeter() {
-          public double perimeter() {
-        if (myPolygon.size() < 2) return 0;
+        if (myPolygon.size() < 2)
+            return 0;
 
         double total = 0;
 
@@ -32,12 +28,12 @@ public class IrregularPolygon {
             total += p1.distance(p2);
         }
 
-        return 3.14;
+        return total;
     }
 
     public double area() {
-        public double area() {
-        if (myPolygon.size() < 3) return 0;
+        if (myPolygon.size() < 3)
+            return 0;
 
         double sum = 0;
 
@@ -50,15 +46,11 @@ public class IrregularPolygon {
 
         return Math.abs(sum) / 2.0;
     }
-        Double area = 0.0;
-        return area;
-    }
 
     public void draw()
     {
         // Wrap the DrawingTool in a try/catch to allow development without need for graphics.
         try {
-             try {
             DrawingTool myDrawingTool = new DrawingTool(new SketchPad(500, 500));
 
             if (myPolygon.size() == 0) return;
@@ -77,5 +69,4 @@ public class IrregularPolygon {
             System.out.println("Exception: No graphics support available.");
         }
     }
-
 }
