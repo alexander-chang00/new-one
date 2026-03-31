@@ -6,18 +6,24 @@ public class IntegerStack {
     private int depth;
 
     // Construct a stack of given depth
-    public IntegerStack(int depth)
-    {
+   public IntegerStack(int capacity) {
         this.depth = 0;
-        stack = new int[depth];
-    }
+        stack = new int[capacity];
+   }
 
     // Get the value of the top element without removal
     public int peek()
     {
-        if (depth > 0)
+        if (depth == 0){
+             return 0;
+        }
+         else if (depth > 0)
+            
         {
-            return stack[depth -1];
+            return stack[depth - 1];
+        }
+         else {
+             return 0;
         }
         return 0;
     }
