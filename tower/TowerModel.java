@@ -46,10 +46,43 @@ public class TowerModel {
 
 
     // Move one disk from the source stack to the destination stack.
+    // No disk number provided.
     public void move(int source, int destination)
     {
-        System.out.println("Move #" + ++moveCounter + " from " + source + " to " + destination);
-        // TODO!!
+        System.out.println("Move #" + ++moveCounter + " from tower" + source + " to tower" + destination);
+        if (towers[source].isEmpty())
+        {
+            System.out.println("Illegal move: source tower is empty");
+            return;
+        }
+        if (!towers[destination].isEmpty() && towers[source].peek() > towers[destination].peek())
+        {
+            System.out.println("Illegal move: cannot place larger disk on top of smaller disk");
+            return;
+        }
+        towers[destination].push(towers[source].pop());
+    }
+
+    //overloaded
+    public void move(int disk, int source, int destination)
+    {      
+        System.out.println("Move #" + ++moveCounter + ": disk" + disk + " from tower" + source + " to tower" + destination);
+        if (towers[source].peek() != disk)
+        {
+            System.out.println("Illegal move: disk" + disk + " is not on top of source tower");
+            return;
+        }
+        if (towers[source].isEmpty())
+        {
+            System.out.println("Illegal move: source tower is empty");
+            return;
+        }
+        if (!towers[destination].isEmpty() && towers[source].peek() > towers[destination].peek())
+        {
+            System.out.println("Illegal move: cannot place larger disk on top of smaller disk");
+            return;
+        }
+        towers[destination].push(towers[source].pop());
     }
 
     // Helper method to nicely print the current model state.

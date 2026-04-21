@@ -14,18 +14,15 @@ public class IntegerStack {
     // Get the value of the top element without removal
     public int peek()
     {
-        if (depth == 0){
+        if (depth == 0) {
              return 0;
         }
-         else if (depth > 0)
-            
-        {
+        else if (depth > 0) {
             return stack[depth - 1];
         }
-         else {
-             return 0;
+        else {
+            return 0;
         }
-        return 0;
     }
 
     // Remove an element from the top of the stack.
@@ -41,14 +38,22 @@ public class IntegerStack {
     }
 
     // Insert an element at the top of the stack
-    public void push(int value)
-    {
+    public void push(int value) {
+        if (depth >= stack.length) {
+            return;
+        }         
+        else if (depth < stack.length) {
+            stack[depth] = value;
+        }
         if ((depth >= 0) && (depth < stack.length))
         {
             stack[depth++] = value;
         }
     }
-
+public boolean isEmpty()
+    {
+        return depth == 0;
+    }
     // Debug function for printing
     public int get(int index)
     {
